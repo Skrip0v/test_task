@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -25,6 +24,11 @@ class AuthPhoneInputWidget extends StatelessWidget {
       inputFormatters: [
         MaskedInputFormatter('+# (###) ### ## ##'),
       ],
+      style: const TextStyle(
+        color: Colors.black,
+        fontSize: 19,
+        fontWeight: FontWeight.w400,
+      ),
       decoration: InputDecoration(
         hintText: '+0 (000) 000 000',
         prefixIcon: SizedBox(
@@ -33,22 +37,22 @@ class AuthPhoneInputWidget extends StatelessWidget {
             child: SvgPicture.asset('assets/icons/phone.svg'),
           ),
         ),
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Color.fromARGB(120, 123, 128, 154),
-          fontSize: 20,
+          fontSize: 19,
           fontWeight: FontWeight.w400,
         ),
-        border: UnderlineInputBorder(
+        border: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: Color(0xFFA73AFD),
           ),
         ),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: Color(0xFFA73AFD),
           ),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: Color(0xFFA73AFD),
           ),

@@ -6,10 +6,12 @@ class ColoredButtonWidget extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isEnable = true,
+    this.isLoading = false,
   });
   final String text;
   final void Function()? onPressed;
   final bool isEnable;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +48,23 @@ class ColoredButtonWidget extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(top: 10.5, bottom: 10.5),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              child: isLoading
+                  ? const SizedBox(
+                      height: 23,
+                      width: 23,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    )
+                  : Text(
+                      text,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
             ),
           ),
         ),
