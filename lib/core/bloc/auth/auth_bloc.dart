@@ -19,6 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     phoneNumber = event.phoneNumber;
+
     var isSuccess = await _authRep.requestCode(phoneNumber);
 
     if (isSuccess == false) {
@@ -48,17 +49,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthRequestAgainCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
-    bool isSuccess = true;
-
-    try {
-      isSuccess = await _authRep.requestCode(phoneNumber);
-    } catch (e) {
-      isSuccess = false;
-    }
+    var isSuccess = await _authRep.requestCode(phoneNumber);
 
     if (isSuccess == false) {
       emit(
-        AuthWaitCodeErrorState(error: 'Не удалось заново запросить код'),
+        AuthWaitCodeErrorState(
+          error: 'Не удалось заново запросить код',
+        ),
       );
     }
   }

@@ -5,29 +5,29 @@ import 'package:test_task/core/repos/request_results/auth_check_code_result.dart
 
 class AuthRep {
   Future<bool> requestCode(String phoneNumber) async {
-    var res = await Dio().post(
-      'https://beta.back.erp.itecho.ru/api/counterparty/send_password',
-      options: Options(
-        validateStatus: (status) {
-          return status! <= 500;
+    try {
+      var res = await Dio().post(
+        'https://beta.back.erp.itecho.ru/api/counterparty/send_password',
+        options: Options(
+          validateStatus: (status) {
+            return status! <= 500;
+          },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+        data: {
+          'phone': phoneNumber,
         },
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      ),
-      data: {
-        'phone': phoneNumber,
-      },
-    );
+      );
 
-    log(res.data.toString());
-    log(res.statusCode.toString());
-    log(res.statusMessage.toString());
-
-    if (res.statusCode == 200) {
-      return true;
-    } else {
+      if (res.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
       return false;
     }
   }
