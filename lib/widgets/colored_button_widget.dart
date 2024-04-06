@@ -19,15 +19,16 @@ class ColoredButtonWidget extends StatelessWidget {
       duration: const Duration(milliseconds: 200),
       opacity: !isEnable ? 0.55 : 1,
       child: Container(
-        padding: const EdgeInsets.only(left: 1, right: 1),
+        padding: const EdgeInsets.only(left: 2, right: 2),
         decoration: BoxDecoration(
           gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
-              const Color(0x0f4c79af).withOpacity(0.40),
+              const Color(0xFF4C79AF).withOpacity(0.1),
               Colors.white,
             ],
           ),
-          color: Colors.white,
           borderRadius: BorderRadius.circular(100),
           boxShadow: [
             BoxShadow(
@@ -40,7 +41,7 @@ class ColoredButtonWidget extends StatelessWidget {
         ),
         child: IgnorePointer(
           ignoring: !isEnable,
-          child: OutlinedButton(
+          child: ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFA73AFD),

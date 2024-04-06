@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:test_task/style/app_colors.dart';
 
 class AuthCodeInputWidget extends StatelessWidget {
   const AuthCodeInputWidget({
@@ -7,7 +8,7 @@ class AuthCodeInputWidget extends StatelessWidget {
     required this.controller,
   });
   final TextEditingController controller;
-  
+
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
@@ -19,25 +20,25 @@ class AuthCodeInputWidget extends StatelessWidget {
       cursorHeight: 25,
       hintCharacter: '•',
       hintStyle: const TextStyle(
-        color: Color(0xFF65239F),
+        color: Color(0xFF6E1DA5),
         fontSize: 28,
-      ),
+      ),scrollPadding: EdgeInsets.zero,
       animationType: AnimationType.fade,
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
-        borderRadius: BorderRadius.circular(9.8),
+        borderRadius: BorderRadius.circular(15),
         borderWidth: 1,
         activeBorderWidth: 1,
         errorBorderWidth: 1,
         disabledBorderWidth: 1,
         inactiveBorderWidth: 1,
         selectedBorderWidth: 1,
-        fieldHeight: 60,
-        fieldWidth: 60,
-        activeColor: const Color(0xFF65239F),
-        selectedColor: const Color(0xFF65239F),
-        errorBorderColor: const Color(0xFF65239F),
-        inactiveColor: const Color(0xFF65239F),
+        fieldHeight: 55,
+        fieldWidth: 55,
+        activeColor: AppColors.main,
+        selectedColor: AppColors.main,
+        errorBorderColor: AppColors.main,
+        inactiveColor: AppColors.main,
       ),
     );
   }

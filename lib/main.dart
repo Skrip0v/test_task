@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_task/core/bloc/auth/auth_bloc.dart';
 import 'package:test_task/core/router/router.dart';
+import 'package:test_task/style/app_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
+        theme: AppTheme.light,
         debugShowCheckedModeBanner: false,
         routerConfig: _appRouter.config(),
       ),

@@ -4,8 +4,9 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:test_task/core/router/router.dart';
-import 'package:test_task/screens/splash/widgets/splash_button_widget.dart';
+import 'package:test_task/screens/splash/widgets/splash_progress_widget.dart';
 import 'package:test_task/screens/splash/widgets/splash_video_widget.dart';
 import 'package:video_player/video_player.dart';
 
@@ -45,8 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
           SplashVideoWidget(controller: _videoController),
           //Button
           Positioned(
-            bottom: MediaQuery.of(context).viewPadding.bottom + 20,
-            child: SplashButtonWidget(
+            bottom: MediaQuery.of(context).viewPadding.bottom + 70,
+            child: SplashProgressWidget(
               percent: percent,
             ),
           ),

@@ -26,7 +26,7 @@ class AuthPhoneInputWidget extends StatelessWidget {
       ],
       style: const TextStyle(
         color: Colors.black,
-        fontSize: 19,
+        fontSize: 20,
         fontWeight: FontWeight.w400,
       ),
       decoration: InputDecoration(
@@ -39,7 +39,7 @@ class AuthPhoneInputWidget extends StatelessWidget {
         ),
         hintStyle: const TextStyle(
           color: Color.fromARGB(120, 123, 128, 154),
-          fontSize: 19,
+          fontSize: 20,
           fontWeight: FontWeight.w400,
         ),
         border: const UnderlineInputBorder(

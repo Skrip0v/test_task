@@ -7,6 +7,7 @@ import 'package:test_task/core/bloc/auth/auth_state.dart';
 import 'package:test_task/core/functions/show_alert_dialog.dart';
 import 'package:test_task/core/router/router.dart';
 import 'package:test_task/screens/auth/phone/widgets/auth_phone_input_widget.dart';
+import 'package:test_task/style/app_colors.dart';
 import 'package:test_task/widgets/app_bar_widget.dart';
 import 'package:test_task/widgets/colored_button_widget.dart';
 
@@ -55,7 +56,7 @@ class _AuthPhoneScreenState extends State<AuthPhoneScreen> {
           top: false,
           child: Container(
             width: double.infinity,
-            margin: const EdgeInsets.only(top: 70, bottom: 30),
+            margin: const EdgeInsets.only(top: 97.5, bottom: 25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -63,56 +64,58 @@ class _AuthPhoneScreenState extends State<AuthPhoneScreen> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Укажите номер телефона',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF464646),
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.text,
                       ),
                     ),
-                    const SizedBox(height: 5),
-                    const Text(
+                    const SizedBox(height: 7.5),
+                    Text(
                       'На него позвонит робот\nи сообщит код подтверждения',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF464646),
+                        color: AppColors.text,
                       ),
                     ),
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 33),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 50),
+                      margin: const EdgeInsets.symmetric(horizontal: 70),
                       child: AuthPhoneInputWidget(
                         controller: _phoneController,
                         focus: _phoneFocus,
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 44),
                     Container(
                       width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 50),
+                      margin: const EdgeInsets.symmetric(horizontal: 70),
                       child: ColoredButtonWidget(
                         text: 'Вход',
                         isLoading: _isLoading,
                         onPressed: () {
-                          if (_phoneController.text.isEmpty) return;
-                          if (_phoneController.text.length != 18) return;
-                          if (_isLoading) return;
-                          setState(() => _isLoading = true);
+                          AutoRouter.of(context).push(const AuthCodeRoute());
 
-                          var digits = _phoneController.text
-                              .replaceAll(' ', '')
-                              .replaceAll(')', '')
-                              .replaceAll('(', '')
-                              .replaceAll('+', '')
-                              .replaceAll('-', '');
+                          // if (_phoneController.text.isEmpty) return;
+                          // if (_phoneController.text.length != 18) return;
+                          // if (_isLoading) return;
+                          // setState(() => _isLoading = true);
 
-                          context
-                              .read<AuthBloc>()
-                              .add(AuthRequestCodeEvent(phoneNumber: digits));
+                          // var digits = _phoneController.text
+                          //     .replaceAll(' ', '')
+                          //     .replaceAll(')', '')
+                          //     .replaceAll('(', '')
+                          //     .replaceAll('+', '')
+                          //     .replaceAll('-', '');
+
+                          // context
+                          //     .read<AuthBloc>()
+                          //     .add(AuthRequestCodeEvent(phoneNumber: digits));
                         },
                       ),
                     ),
@@ -123,10 +126,13 @@ class _AuthPhoneScreenState extends State<AuthPhoneScreen> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: const TextSpan(
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
                       children: [
                         TextSpan(
                           text:
-                              'Отправляя форму, вы подтверждаете свое согласие на ',
+                              'Отправляя форму, вы подтверждаете свое\nсогласие на ',
                           style: TextStyle(
                             color: Color(0xFF464646),
                           ),

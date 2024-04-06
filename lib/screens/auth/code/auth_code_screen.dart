@@ -9,6 +9,7 @@ import 'package:test_task/core/bloc/auth/auth_event.dart';
 import 'package:test_task/core/bloc/auth/auth_state.dart';
 import 'package:test_task/core/functions/show_alert_dialog.dart';
 import 'package:test_task/screens/auth/code/widgets/auth_code_input_widget.dart';
+import 'package:test_task/style/app_colors.dart';
 import 'package:test_task/widgets/app_bar_widget.dart';
 import 'package:test_task/widgets/colored_button_widget.dart';
 
@@ -73,38 +74,37 @@ class _AuthCodeScreenState extends State<AuthCodeScreen> {
           top: false,
           child: Container(
             width: double.infinity,
-            margin: const EdgeInsets.only(top: 70),
+            margin: const EdgeInsets.only(top: 97.5, bottom: 25),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   'Введите код',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF464646),
+                    color: AppColors.text,
                   ),
                 ),
-                const SizedBox(height: 5),
-                const Text(
+                const SizedBox(height: 7.5),
+                Text(
                   'Вам поступил звонок,\nвведите последние 4 цифры',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF464646),
+                    color: AppColors.text,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 32.5),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  margin: const EdgeInsets.symmetric(horizontal: 60),
                   child: AuthCodeInputWidget(
                     controller: _codeController,
                   ),
                 ),
-                const SizedBox(height: 20),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
@@ -112,6 +112,8 @@ class _AuthCodeScreenState extends State<AuthCodeScreen> {
                       fontFeatures: [
                         FontFeature.tabularFigures(),
                       ],
+                      fontSize: 12,
+                      fontFamily: 'ABeeZee',
                     ),
                     children: [
                       const TextSpan(
@@ -133,7 +135,7 @@ class _AuthCodeScreenState extends State<AuthCodeScreen> {
                 const SizedBox(height: 10),
                 Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  margin: const EdgeInsets.symmetric(horizontal: 70),
                   child: ColoredButtonWidget(
                     text: 'Запросить',
                     isEnable: _currentDuration <= 0,
@@ -150,7 +152,7 @@ class _AuthCodeScreenState extends State<AuthCodeScreen> {
                 const SizedBox(height: 10),
                 Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  margin: const EdgeInsets.symmetric(horizontal: 70),
                   child: ColoredButtonWidget(
                     text: 'Вход',
                     isLoading: _isLoading,
