@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:test_task/core/repos/request_results/auth_check_code_result.dart';
 
 class AuthRep {
-  Future<bool> requestCode(String phoneNumber) async {
+  Future<String?> requestCode(String phoneNumber) async {
     try {
       var res = await Dio().post(
         'https://beta.back.erp.itecho.ru/api/counterparty/send_password',
@@ -23,12 +23,12 @@ class AuthRep {
       );
 
       if (res.statusCode == 200) {
-        return true;
+        return null;
       } else {
-        return false;
+        return res.data ?? 'Ошибка';
       }
     } catch (e) {
-      return false;
+      return null;
     }
   }
 

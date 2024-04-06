@@ -1,35 +1,41 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class SplashButtonWidget extends StatelessWidget {
-  const SplashButtonWidget({super.key});
+  const SplashButtonWidget({
+    super.key,
+    required this.percent,
+  });
+
+  final double percent;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15),
-      width: MediaQuery.of(context).size.width - 30,
-      child: ElevatedButton(
-        onPressed: () {
-          AutoRouter.of(context).pushNamed('/authPhone');
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFA73AFD).withOpacity(
-            0.5,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(left: 15, right: 15),
+          child: LinearPercentIndicator(
+            width: MediaQuery.of(context).size.width - 30,
+            lineHeight: 65.0,
+            barRadius: const Radius.circular(100),
+            percent: percent > 1.0 ? 1.0 : percent,
+            backgroundColor: const Color(0xFFA73AFD).withOpacity(0.25),
+            progressColor: const Color(0xFFA73AFD).withOpacity(0.75),
           ),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12),
+        const Positioned(
           child: Text(
             'Привет Наталья)',
             style: TextStyle(
-              fontSize: 24,
               color: Colors.white,
+              fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -8,7 +8,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final _authRep = AuthRep();
   late String phoneNumber;
 
-  AuthBloc() : super(AuthNotLoggedState(isHasError: false)) {
+  AuthBloc() : super(AuthNotLoggedState()) {
     on<AuthRequestCodeEvent>(requestCode);
     on<AuthCheckCodeEvent>(checkCode);
     on<AuthRequestAgainCodeEvent>(requestAgainCode);
@@ -20,10 +20,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     phoneNumber = event.phoneNumber;
 
-    var isSuccess = await _authRep.requestCode(phoneNumber);
+    var result = await _authRep.requestCode(phoneNumber);
 
-    if (isSuccess == false) {
-      emit(AuthNotLoggedState(isHasError: true));
+    if (result is String) {
+      emit(AuthNotLoggedErrorState(error: result));
     } else {
       emit(AuthWaitCodeState());
     }
@@ -49,14 +49,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthRequestAgainCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
-    var isSuccess = await _authRep.requestCode(phoneNumber);
+    var result = await _authRep.requestCode(phoneNumber);
 
-    if (isSuccess == false) {
-      emit(
-        AuthWaitCodeErrorState(
-          error: 'Не удалось заново запросить код',
-        ),
-      );
+    if (result is String) {
+      emit(AuthWaitCodeErrorState(error: result));
     }
   }
 }

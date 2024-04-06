@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,18 +36,14 @@ class _AuthPhoneScreenState extends State<AuthPhoneScreen> {
         if (state is AuthWaitCodeState) {
           AutoRouter.of(context).push(const AuthCodeRoute());
           setState(() => _isLoading = false);
-          return;
+        } else if (state is AuthNotLoggedErrorState) {
+          setState(() => _isLoading = false);
+          showAlertDialog(
+            context,
+            title: 'Ошибка',
+            message: state.error,
+          );
         }
-
-        if (state is! AuthNotLoggedState) return;
-        if (state.isHasError == false) return;
-        setState(() => _isLoading = false);
-
-        showAlertDialog(
-          context,
-          title: 'Ошибка',
-          message: 'Не удалось выполнить запрос',
-        );
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
