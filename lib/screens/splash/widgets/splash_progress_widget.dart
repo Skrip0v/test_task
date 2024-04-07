@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:test_task/style/app_colors.dart';
+import 'package:test_task/l10n/app_localizations.dart';
 
 class SplashProgressWidget extends StatelessWidget {
   const SplashProgressWidget({
@@ -27,18 +25,19 @@ class SplashProgressWidget extends StatelessWidget {
               percent: percent > 1.0 ? 1.0 : percent,
               padding: EdgeInsets.zero,
               backgroundColor: Colors.transparent,
-              fillColor: AppColors.main.withOpacity(0.25),
-              progressColor: AppColors.main.withOpacity(0.75),
+              fillColor: Theme.of(context).colorScheme.primary.withOpacity(
+                    0.25,
+                  ),
+              progressColor: Theme.of(context).colorScheme.primary.withOpacity(
+                    0.75,
+                  ),
             ),
           ),
         ),
         Positioned(
           child: Text(
-            'Привет Наталья)',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
+            AppLocalizations.of(context)!.hello("Наталья)"),
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
               shadows: <Shadow>[
                 Shadow(
                   offset: const Offset(0, 0),

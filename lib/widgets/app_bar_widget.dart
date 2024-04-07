@@ -1,30 +1,35 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:test_task/style/app_colors.dart';
 
-class AppBarWidget {
-  static AppBar titleAndBack(
-    BuildContext context, {
-    required String title,
-  }) {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarWidget({
+    super.key,
+    required this.title,
+    this.isNeedBackButton = true,
+  });
+
+  final String title;
+  final bool isNeedBackButton;
+
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
       scrolledUnderElevation: 0,
-      leading: IconButton(
-        onPressed: () {
-          AutoRouter.of(context).maybePop();
-        },
-        icon: SvgPicture.asset('assets/icons/back.svg'),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: AppColors.text,
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
+      automaticallyImplyLeading: false,
+      leading: isNeedBackButton
+          ? IconButton(
+              onPressed: () {
+                AutoRouter.of(context).maybePop();
+              },
+              icon: SvgPicture.asset('assets/icons/back.svg'),
+            )
+          : null,
+      title: Text(title),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

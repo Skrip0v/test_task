@@ -13,48 +13,51 @@ class AuthPhoneInputWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      focusNode: focus,
-      onTapOutside: (event) {
-        focus?.unfocus();
-      },
-      keyboardType: TextInputType.phone,
-      autocorrect: false,
-      inputFormatters: [
-        MaskedInputFormatter('+# (###) ### ## ##'),
-      ],
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-      ),
-      decoration: InputDecoration(
-        hintText: '+0 (000) 000 000',
-        prefixIcon: SizedBox(
-          width: 0,
-          child: Center(
-            child: SvgPicture.asset('assets/icons/phone.svg'),
-          ),
-        ),
-        hintStyle: const TextStyle(
-          color: Color.fromARGB(120, 123, 128, 154),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 70),
+      child: TextField(
+        controller: controller,
+        focusNode: focus,
+        onTapOutside: (event) {
+          focus?.unfocus();
+        },
+        keyboardType: TextInputType.phone,
+        autocorrect: false,
+        inputFormatters: [
+          MaskedInputFormatter('+# (###) ### ## ##'),
+        ],
+        style: const TextStyle(
+          color: Colors.black,
           fontSize: 20,
           fontWeight: FontWeight.w400,
         ),
-        border: const UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(0xFFA73AFD),
+        decoration: InputDecoration(
+          hintText: '+0 (000) 000 000',
+          prefixIcon: SizedBox(
+            width: 0,
+            child: Center(
+              child: SvgPicture.asset('assets/icons/phone.svg'),
+            ),
           ),
-        ),
-        enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(0xFFA73AFD),
+          hintStyle: const TextStyle(
+            color: Color.fromARGB(120, 123, 128, 154),
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
           ),
-        ),
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(0xFFA73AFD),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ),
       ),

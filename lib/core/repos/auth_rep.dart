@@ -1,9 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+
 import 'package:test_task/core/repos/request_results/auth_check_code_result.dart';
 
 class AuthRep {
+  final Dio dio;
+
+  AuthRep({
+    required this.dio,
+  });
+
   Future<String?> requestCode(String phoneNumber) async {
     try {
       var res = await Dio().post(

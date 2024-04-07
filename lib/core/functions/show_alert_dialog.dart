@@ -17,7 +17,13 @@ Future<void> showAlertDialog(
             onPressed: () {
               AutoRouter.of(context).maybePop();
             },
-            child: const Text('Понятно'),
+            child: Text(
+              'Понятно',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: 18,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+            ),
           ),
         ],
       );

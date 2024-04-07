@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_task/core/bloc/auth/auth_event.dart';
 import 'package:test_task/core/bloc/auth/auth_state.dart';
@@ -5,7 +6,7 @@ import 'package:test_task/core/repos/auth_rep.dart';
 import 'package:test_task/core/repos/request_results/auth_check_code_result.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final _authRep = AuthRep();
+  final _authRep = AuthRep(dio: Dio());
   late String phoneNumber;
 
   AuthBloc() : super(AuthNotLoggedState()) {

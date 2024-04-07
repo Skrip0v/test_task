@@ -1,0 +1,22 @@
+{
+    "loginAndRegistration": "Вход/Регистрация",
+    "enterCode": "Введите код",
+    "incomingCallEnterLastFourDigits": "Вам поступил звонок,\nвведите последние 4 цифры",
+    "requestCodeAgain": "Запросите код повторно через ",
+    "request": "Запросить",
+    "signIn": "Вход",
+    "error": "Ошибка",
+    "enterPhoneNumber": "Укажите номер телефона",
+    "robotCallMessage": "На него позвонит робот\nи сообщит код подтверждения",
+    "confirmationMessage": "Отправляя форму, вы подтверждаете свое\nсогласие на ",
+    "personalDataProcessing": "обработку персональных данных",
+    "hello": "Привет {userName}",
+    "@hello": {
+        "placeholders": {
+            "userName": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    }
+}
